@@ -3,10 +3,10 @@ import json
 from yt_dlp import YoutubeDL
 from datetime import datetime
 
-PLAYLIST_URL = 'https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID'
+PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLxvtIH8nzpyUecs3sbg7ZA1KG6Qco_Uy9'
 DOWNLOAD_DIR = 'downloads'
-STATIC_DIR = 'static'
-METADATA_FILE = 'songs.json'
+STATIC_DIR = 'app/public/beats'
+METADATA_FILE = 'app/public/beats/metadata.json'
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 os.makedirs(STATIC_DIR, exist_ok=True)
@@ -26,7 +26,7 @@ def download_new_videos():
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
-            'preferredquality': '320',  # Highest quality
+            'preferredquality': '128', 
         }],
         'extract_flat': False,
         'noplaylist': False,
@@ -63,6 +63,7 @@ def download_new_videos():
                     'title': result.get('title'),
                     'url': result.get('webpage_url'),
                     'duration': result.get('duration'),
+                    'thumbnail': result.get('thumbnail'),
                     'filename': filename,
                     'added': datetime.utcnow().isoformat() + "Z"
                 }

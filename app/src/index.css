@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+body {
+  letter-spacing: 0.1em !important;
+  font-family: "Noto Serif SC", serif !important;
+  background-color: black;
+  color: white;
+}
